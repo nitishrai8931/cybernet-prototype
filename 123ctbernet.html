@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CYBERNET — Cybersecurity Assistance & Expert-Connect Platform</title>
+<style>
+:root{--bg:#050914;--glass:rgba(20,32,60,.55);--line:rgba(0,229,255,.25);--cy:#00e5ff;--bl:#3b82f6;--vi:#8b5cf6;--tx:#e6f0ff;--mu:#8ea2c4;--ok:#22e3a0;--wa:#ffb020;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#13204a,transparent),var(--bg);color:var(--tx);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;overflow-x:hidden;background-image:linear-gradient(rgba(0,229,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.04) 1px,transparent 1px);background-size:48px 48px}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:12px 5vw;background:rgba(5,9,20,.7);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav b{letter-spacing:.25em;color:var(--cy)}nav div{display:flex;gap:18px;font-size:13px;flex-wrap:wrap}
+a{color:var(--mu);text-decoration:none}a:hover{color:var(--cy)}
+section{padding:90px 5vw 40px;max-width:1200px;margin:auto}
+h2{font-size:clamp(24px,4vw,40px);letter-spacing:.06em;margin:0 0 6px}h2+p{color:var(--mu);margin:0 0 26px}
+#hero{position:relative;height:100vh;min-height:620px;max-width:none;padding:0;display:grid;place-items:center;text-align:center}
+#c{position:absolute;inset:0;width:100%;height:100%}
+.hc{position:relative;z-index:2;padding:0 5vw;pointer-events:none}.hc *{pointer-events:auto}
+h1{font-size:clamp(44px,9vw,110px);line-height:.95;margin:10px 0 16px;background:linear-gradient(120deg,#fff,var(--cy) 50%,var(--vi));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hc p{max-width:560px;margin:0 auto 24px;color:var(--mu)}
+.st{display:inline-flex;gap:8px;align-items:center;font-size:12px;border:1px solid var(--line);padding:5px 12px;border-radius:99px;background:var(--glass)}
+.st:before,.dot{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);display:inline-block}
+.btn{border:1px solid var(--cy);background:rgba(0,229,255,.12);color:var(--tx);padding:12px 22px;border-radius:12px;font-weight:600;cursor:pointer;font-size:14px;transition:.2s;margin:4px}
+.btn:hover{background:var(--cy);color:#001018;box-shadow:0 0 24px rgba(0,229,255,.5);transform:translateY(-2px)}
+.btn.s{border-color:var(--vi);background:rgba(139,92,246,.15)}
+.scroll{position:absolute;bottom:22px;z-index:2;font-size:11px;letter-spacing:.3em;color:var(--mu);animation:b 2s infinite}
+@keyframes b{50%{transform:translateY(6px)}}
+.g{background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:18px;backdrop-filter:blur(10px);transition:.25s}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.flow{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 18px;scrollbar-width:thin}
+.nd{flex:0 0 auto;min-width:118px;text-align:center;padding:14px 10px;cursor:pointer;font-size:12px;letter-spacing:.06em}
+.nd i{display:block;font-style:normal;font-size:22px;margin-bottom:4px}
+.nd.on,.nd:hover{border-color:var(--cy);box-shadow:0 0 26px rgba(0,229,255,.35);transform:translateY(-6px) scale(1.05)}
+#fd{min-height:90px}
+.bar{height:4px;background:rgba(255,255,255,.1);border-radius:9px;overflow:hidden;margin-top:12px}.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cy),var(--vi));transition:width 1.2s}
+.steps{display:flex;gap:6px;margin-bottom:16px}.steps i{flex:1;height:4px;border-radius:9px;background:rgba(255,255,255,.12)}.steps i.on{background:var(--cy);box-shadow:0 0 10px var(--cy)}
+textarea,input[type=date],select{width:100%;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:12px;color:var(--tx);padding:12px;font:inherit}
+textarea{min-height:110px}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:7px 14px;margin:4px;cursor:pointer;font-size:13px;background:rgba(0,0,0,.25);transition:.2s}
+.chip.on{background:rgba(0,229,255,.2);border-color:var(--cy);color:#fff}
+.drop{border:2px dashed var(--line);border-radius:16px;padding:26px;text-align:center;color:var(--mu)}
+.drop.ov{border-color:var(--cy);background:rgba(0,229,255,.08)}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-top:12px}td,th{text-align:left;padding:6px;border-bottom:1px solid var(--line);word-break:break-all}
+.warn{border-left:3px solid var(--wa);padding:8px 12px;background:rgba(255,176,32,.08);font-size:12px;color:#ffd27a;margin:12px 0;border-radius:6px}
+.ex{cursor:pointer;perspective:800px}.ex:hover{transform:translateY(-8px) rotateX(4deg);border-color:var(--cy);box-shadow:0 20px 40px rgba(0,229,255,.18)}
+.av{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:conic-gradient(var(--cy),var(--vi),var(--bl),var(--cy));color:#001018;margin-bottom:8px}
+.tag{font-size:11px;padding:2px 8px;border-radius:99px;background:rgba(139,92,246,.2);margin:2px;display:inline-block}
+.vb{color:var(--ok);font-size:12px}
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:40;display:none;place-items:center;padding:16px;backdrop-filter:blur(6px)}
+#modal.on{display:grid}#modal .g{max-width:560px;width:100%;max-height:88vh;overflow:auto;background:#0b1430}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.kp{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin-bottom:14px}.kp b{display:block;font-size:28px;color:var(--cy)}
+.tl{display:flex;gap:0;margin:14px 0}.tl div{flex:1;text-align:center;font-size:11px;color:var(--mu);position:relative;padding-top:20px}
+.tl div:before{content:"";position:absolute;top:4px;left:50%;width:12px;height:12px;border-radius:50%;background:#223;border:1px solid var(--mu);transform:translateX(-50%);z-index:1}
+.tl div:after{content:"";position:absolute;top:9px;left:50%;width:100%;height:2px;background:#223}.tl div:last-child:after{display:none}
+.tl .d{color:var(--tx)}.tl .d:before{background:var(--cy);box-shadow:0 0 10px var(--cy);border-color:var(--cy)}.tl .d:after{background:var(--cy)}
+.msg{background:rgba(0,229,255,.08);padding:8px 12px;border-radius:10px;margin:6px 0;max-width:80%;font-size:13px}.msg.m{margin-left:auto;background:rgba(139,92,246,.2)}
+.orb{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}.orb .g{padding:10px 16px;font-size:13px;animation:fl 4s ease-in-out infinite}.orb .g:nth-child(2n){animation-delay:-2s}
+@keyframes fl{50%{transform:translateY(-6px)}}
+#toast{position:fixed;bottom:20px;right:20px;z-index:50;display:flex;flex-direction:column;gap:8px}#toast div{background:#0b1430;border:1px solid var(--cy);padding:10px 16px;border-radius:10px;font-size:13px;animation:b .3s}
+footer{border-top:1px solid var(--line);padding:40px 5vw;text-align:center;color:var(--mu);font-size:13px;margin-top:40px}
+.rv{opacity:0;transform:translateY(24px);transition:.7s}.rv.in{opacity:1;transform:none}
+</style></head><body>
+<nav><b>CYBERNET</b><div><a href="#hero">Home</a><a href="#report">Report Incident</a><a href="#experts">Find Experts</a><a href="#dash">Dashboards</a><a href="#sec">Security</a></div></nav>
+
+<section id="hero"><canvas id="c"></canvas>
+<div class="hc"><span class="st">CyberNet Network Operational</span>
+<h1>CONNECT.<br>PROTECT.<br>RESPOND.</h1>
+<p>CyberNet connects individuals and organizations with verified cybersecurity expertise when it matters most.</p>
+<button class="btn" onclick="go('report')">REPORT AN INCIDENT</button><button class="btn s" onclick="go('experts')">FIND A CYBER EXPERT</button></div>
+<div class="scroll">EXPLORE THE NETWORK ↓</div></section>
+
+<section class="rv"><h2>FROM INCIDENT TO RESOLUTION</h2><p>Tap any node to see how a case moves through CyberNet.</p>
+<div class="flow" id="flow"></div><div class="g" id="fd"></div></section>
+
+<section id="report" class="rv"><h2>REPORT CYBER INCIDENT</h2><p>A guided 5-step wizard. No jargon needed.</p>
+<div class="g"><div class="steps" id="st"></div><div id="wz"></div>
+<div style="margin-top:14px;display:flex;justify-content:space-between"><button class="btn" id="bk">← Back</button><button class="btn" id="nx">Next →</button></div></div></section>
+
+<section id="experts" class="rv"><h2>VERIFIED CYBERSECURITY EXPERTS</h2><p>AI suggests. You choose. Nothing is auto-selected.</p>
+<div id="fl"></div><div class="grid" id="eg" style="margin-top:12px"></div></section>
+
+<section id="dash" class="rv"><h2>ROLE DASHBOARDS</h2><p>One platform, four command centers.</p>
+<div class="tabs" id="tb"></div><div class="g" id="db"></div></section>
+
+<section id="sec" class="rv"><h2>SECURITY BY DESIGN</h2><p>Layers orbiting one protected core.</p>
+<div class="orb" id="sl"></div>
+<h2 style="margin-top:50px">RESPONSIBLE AI</h2><p>AI assists. Humans decide.</p>
+<div class="orb"><div class="g">AI CORE</div><div class="g">→ RECOMMENDATION</div><div class="g">→ HUMAN REVIEW</div><div class="g" style="border-color:var(--ok)">→ FINAL DECISION</div></div>
+<div class="warn">AI recommendations are not final technical, legal or investigative decisions.</div>
+<h2 style="margin-top:50px">TRUSTED EXPERT NETWORK</h2><p>Identity → Certifications → Experience → Verification → Verified Expert</p></section>
+
+<footer><b style="color:var(--cy);letter-spacing:.3em">CYBERNET</b><br>Cybersecurity Assistance & Expert-Connect Platform<br><br>
+<a href="#hero">Home</a> · <a href="#report">Report Incident</a> · <a href="#experts">Find Experts</a> · <a href="#dash">Organizations</a> · <a href="#sec">Security</a><br><br>
+CyberNet supports legitimate cybersecurity assistance and does not replace official law-enforcement investigation or legal processes.</footer>
+<div id="modal" onclick="if(event.target===this)this.classList.remove('on')"><div class="g" id="mb"></div></div><div id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),go=id=>document.getElementById(id).scrollIntoView();
+function toast(t){const d=document.createElement('div');d.textContent=t;$('#toast').append(d);setTimeout(()=>d.remove(),2800)}
+// ---- 3D hero
+try{
+const cv=$('#c'),r=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true}),sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(55,1,.1,100);cam.position.z=7;
+const grp=new THREE.Group();sc.add(grp);
+grp.add(new THREE.Mesh(new THREE.IcosahedronGeometry(2.6,2),new THREE.MeshBasicMaterial({color:0x00e5ff,wireframe:true,transparent:true,opacity:.12})));
+const core=new THREE.Mesh(new THREE.SphereGeometry(.5,24,24),new THREE.MeshBasicMaterial({color:0x8b5cf6,wireframe:true}));grp.add(core);
+const cols=[0x00e5ff,0x3b82f6,0x22e3a0,0xffb020],P=[];
+for(let i=0;i<42;i++){const p=new THREE.Vector3().randomDirection().multiplyScalar(2.6);P.push(p);
+const m=new THREE.Mesh(new THREE.SphereGeometry(.07,10,10),new THREE.MeshBasicMaterial({color:cols[i%4]}));m.position.copy(p);grp.add(m)}
+const lp=[];P.forEach((a,i)=>P.forEach((b,j)=>{if(j>i&&a.distanceTo(b)<1.9){lp.push(a,b)}}));
+grp.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(lp),new THREE.LineBasicMaterial({color:0x00e5ff,transparent:true,opacity:.25})));
+const N=90,pg=new THREE.BufferGeometry(),pa=new Float32Array(N*3),pr=[];
+for(let i=0;i<N;i++){pr.push({a:P[i%42],b:P[(i*7+3)%42],t:Math.random(),v:.004+Math.random()*.006})}
+pg.setAttribute('position',new THREE.BufferAttribute(pa,3));
+grp.add(new THREE.Points(pg,new THREE.PointsMaterial({color:0xffffff,size:.06})));
+let mx=0,my=0;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+function rs(){const w=cv.clientWidth,h=cv.clientHeight;r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();grp.position.x=w>800?2.2:0;grp.scale.setScalar(w>800?1:.8)}rs();addEventListener('resize',rs);
+(function a(){grp.rotation.y+=.0022;core.rotation.x+=.01;cam.position.x+=(mx*2-cam.position.x)*.04;cam.position.y+=(-my*1.5-cam.position.y)*.04;cam.lookAt(grp.position.x*.3,0,0);
+pr.forEach((p,i)=>{p.t+=p.v;if(p.t>1)p.t=0;const v=new THREE.Vector3().lerpVectors(p.a,p.b,p.t);pa.set([v.x,v.y,v.z],i*3)});pg.attributes.position.needsUpdate=true;
+r.render(sc,cam);requestAnimationFrame(a)})()}catch(e){}
+// ---- Flow
+const F=[["⚠","INCIDENT","Something goes wrong: a phishing click, a hacked account, a ransomware note. The victim starts here."],["📝","CASE REGISTRATION","A case ID (e.g. CN-10482) is created with description, date and affected assets."],["🧠","AI CLASSIFICATION","AI analyzes the incident description and suggests categories such as phishing, financial fraud, account compromise, ransomware, identity theft, malware and data breach."],["🔒","EVIDENCE","Screenshots, emails, logs and files are hashed and stored in an encrypted vault."],["🎯","EXPERT MATCHING","Skills, certifications, experience, availability and service type are compared. You pick the expert."],["💬","SECURE COMMUNICATION","Case-linked encrypted chat and file exchange between client and expert."],["🛠","TECHNICAL ASSISTANCE","The verified expert investigates and advises on containment and recovery."],["📄","REPORT","A structured incident summary and findings report is produced."],["✅","CASE CLOSURE","Client confirms resolution; audit trail is preserved."]];
+F.forEach((f,i)=>{const d=document.createElement('div');d.className='g nd';d.innerHTML=`<i>${f[0]}</i>${f[1]}`;d.onclick=()=>{document.querySelectorAll('.nd').forEach((n,j)=>n.classList.toggle('on',j<=i&&j>=i));$('#fd').innerHTML=`<b style="color:var(--cy)">STEP ${i+1} · ${f[1]}</b><p>${f[2]}</p><div class="bar"><span></span></div>`;setTimeout(()=>$('#fd .bar span').style.width=((i+1)/9*100)+'%',30)};$('#flow').append(d)});
+$('.nd').click();
+// ---- Wizard
+let s=0,W={txt:"",aff:[],files:[]};const aff=["Email","Bank Account","Social Media","Device","Website","Company System","Personal Data","Other"];
+function cls(t){t=t.toLowerCase();const m=[["Ransomware",/ransom|encrypt|locked files/],["Financial Fraud",/bank|money|upi|transaction|card/],["Phishing",/link|phish|email|sms/],["Account Compromise",/account|password|login|hack/],["Malware",/virus|malware|app|trojan/],["Identity Theft",/identity|aadhaar|fake profile/]];const h=m.map(x=>[x[0],(t.match(x[1])||[]).length+(W.aff.includes('Bank Account')&&x[0]=='Financial Fraud'?1:0)]).sort((a,b)=>b[1]-a[1])[0];return h[1]?h[0]:"Account Compromise"}
+const SK={"Account Compromise":["Incident Response","Digital Forensics","Cloud Security"],"Phishing":["Incident Response","Web Security","Digital Forensics"],"Financial Fraud":["Digital Forensics","Incident Response","Security Auditing"],"Ransomware":["Incident Response","Malware Analysis","Network Security"],"Malware":["Malware Analysis","Digital Forensics","Network Security"],"Identity Theft":["Digital Forensics","Incident Response","Web Security"]};
+function draw(){$('#st').innerHTML=[0,1,2,3,4].map(i=>`<i class="${i<=s?'on':''}"></i>`).join('');$('#bk').style.visibility=s?'visible':'hidden';$('#nx').textContent=s==4?'VIEW RECOMMENDED EXPERTS':'Next →';const w=$('#wz');
+if(s==0)w.innerHTML=`<h3>01 · What happened?</h3><textarea id="t" placeholder="Describe your incident in your own words... e.g. I clicked a suspicious link and my account was accessed.">${W.txt}</textarea>`;
+if(s==1)w.innerHTML=`<h3>02 · When did it happen?</h3><input type="date" id="dt" value="${W.d||new Date().toISOString().slice(0,10)}" max="${new Date().toISOString().slice(0,10)}"><p style="color:var(--mu);font-size:13px">Earlier timing helps experts trace activity.</p>`;
+if(s==2){w.innerHTML=`<h3>03 · What was affected?</h3>`+aff.map(a=>`<span class="chip ${W.aff.includes(a)?'on':''}">${a}</span>`).join('');w.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{const a=c.textContent;W.aff=W.aff.includes(a)?W.aff.filter(x=>x!=a):[...W.aff,a];c.classList.toggle('on')})}
+if(s==3){w.innerHTML=`<h3>04 · Evidence available</h3><div class="drop" id="dr">Drop screenshots, emails, logs, URLs or files here — or click<input type="file" id="fi" multiple hidden></div><table><tr><th>File</th><th>Hash</th><th>Uploaded</th><th>By</th><th>Access</th></tr>${W.files.map(f=>`<tr><td>${f[0]}</td><td>${f[1]}</td><td>${f[2]}</td><td>You</td><td>🔒 Client+Expert</td></tr>`).join('')}</table>`;const dr=$('#dr');dr.onclick=()=>$('#fi').click();dr.ondragover=e=>{e.preventDefault();dr.classList.add('ov')};dr.ondragleave=()=>dr.classList.remove('ov');dr.ondrop=e=>{e.preventDefault();add(e.dataTransfer.files)};$('#fi').onchange=e=>add(e.target.files)}
+if(s==4){const c=cls(W.txt),cf=80+Math.floor(Math.random()*15);w.innerHTML=`<h3>05 · AI analysis <span class="tag">AI RECOMMENDATION</span></h3><p><span class="dot"></span> INCIDENT DETECTED</p><p>Category: <b style="color:var(--cy)">${c.toUpperCase()}</b></p><div class="bar"><span></span></div><small>Confidence ${cf}%</small><p>Potential skills required:<br>${SK[c].map(x=>'✓ '+x).join('<br>')}</p><p>Evidence checklist:<br>✓ Screenshots<br>✓ Login/transaction alerts<br>✓ Device information<br>✓ Relevant emails</p><div class="warn">Suggested by AI. Not a final technical, legal or investigative decision. A human expert will review.</div>`;setTimeout(()=>$('#wz .bar span').style.width=cf+'%',50);W.c=c}}
+async function add(fl){for(const f of fl){const b=await f.arrayBuffer(),h=await crypto.subtle.digest('SHA-256',b);W.files.push([f.name,[...new Uint8Array(h)].slice(0,6).map(x=>x.toString(16).padStart(2,'0')).join('')+'…',new Date().toLocaleTimeString()])}toast('Evidence hashed & vaulted');draw()}
+function sv(){if(s==0)W.txt=$('#t').value;if(s==1)W.d=$('#dt').value}
+$('#nx').onclick=()=>{sv();if(s==0&&W.txt.trim().length<5)return toast('Please describe what happened');if(s==4){toast('Case CN-10482 created');go('experts');return}s++;draw()};
+$('#bk').onclick=()=>{sv();s--;draw()};draw();
+// ---- Experts
+const E=[["Aarav Mehta","AM",["Incident Response","Digital Forensics"],["GCIH","CEH"],8,"Available","₹2,500/hr","Remote","< 30 min"],["Sofia Keller","SK",["Malware Analysis","Network Security"],["GREM","OSCP"],10,"Available","₹3,200/hr","Remote/Onsite","< 1 hr"],["Rohan Das","RD",["Penetration Testing","Web Security"],["OSCP","eWPT"],6,"Busy","₹2,200/hr","Remote","< 2 hr"],["Priya Nair","PN",["Cloud Security","Security Auditing"],["CCSP","CISA"],9,"Available","₹3,000/hr","Remote","< 1 hr"],["Lukas Bauer","LB",["Digital Forensics","Incident Response"],["GCFE","CISSP"],12,"Available","₹3,800/hr","Onsite","< 45 min"],["Meera Iyer","MI",["Network Security","Security Auditing"],["CCNP Sec","CISM"],7,"Busy","₹2,400/hr","Remote","< 3 hr"]];
+const SV=["All","Incident Response","Digital Forensics","Penetration Testing","Malware Analysis","Cloud Security","Network Security","Web Security","Security Auditing"];let fsel="All";
+function ex(){$('#fl').innerHTML=SV.map(x=>`<span class="chip ${x==fsel?'on':''}">${x}</span>`).join('');document.querySelectorAll('#fl .chip').forEach(c=>c.onclick=()=>{fsel=c.textContent;ex()});
+const rec=W.c?SK[W.c]:[];$('#eg').innerHTML=E.map((e,i)=>({e,i})).filter(o=>fsel=="All"||o.e[2].includes(fsel)).map(({e,i})=>{const m=rec.filter(x=>e[2].includes(x));return`<div class="g ex" onclick="pf(${i})"><div class="av">${e[1]}</div><b>${e[0]}</b> <span class="vb">✔ Verified</span><br>${e[2].map(x=>`<span class="tag">${x}</span>`).join('')}<br><small style="color:var(--mu)">${e[4]} yrs · ${e[5]} · ${e[6]}</small>${m.length?`<div class="warn" style="margin-bottom:0">AI match: ${m.join(', ')}</div>`:''}</div>`}).join('')}
+function pf(i){const e=E[i];$('#mb').innerHTML=`<div class="av">${e[1]}</div><h3>${e[0]} <span class="vb">✔ Verified</span></h3><p><b>ABOUT</b><br>${e[4]}+ years supporting victims and organizations in ${e[2].join(' and ').toLowerCase()}.</p><p><b>SKILLS</b><br>${e[2].join(', ')}</p><p><b>CERTIFICATIONS</b><br>${e[3].join(', ')}</p><p><b>AVAILABILITY</b> ${e[5]} · ${e[7]} · reply ${e[8]}</p><p><b>SERVICES / RATE</b><br>Triage, investigation, reporting · ${e[6]}</p><button class="btn" onclick="toast('Assistance requested from ${e[0]}');$('#modal').classList.remove('on')">REQUEST ASSISTANCE</button>`;$('#modal').classList.add('on')}
+ex();$('#nx').addEventListener('click',()=>setTimeout(ex,0));
+// ---- Dashboards
+const kp=a=>`<div class="kp">${a.map(x=>`<div class="g"><b>${x[0]}</b><small>${x[1]}</small></div>`).join('')}</div>`;
+const D={"Victim":()=>kp([["1","Active case"],["3","Evidence files"],["2","Messages"]])+`<b>CASE #CN-10482</b> · Account Compromise · <span style="color:var(--wa)">High</span><div class="tl"><div class="d">Submitted</div><div class="d">AI Classified</div><div class="d">Expert Matched</div><div>Investigation</div><div>Report</div><div>Closed</div></div><div class="msg">Expert: Please reset your email password from a clean device.</div><div class="msg m">Done. Sending login alert screenshots now.</div><button class="btn" onclick="toast('Message sent via secure channel')">● Secure Channel · E2E protected</button>`,
+"Organization":()=>kp([["7","Active incidents"],["4","Open projects"],["5","Experts engaged"],["3","Pending requests"]])+`<div class="g"><b>+ CREATE CYBERSECURITY REQUIREMENT</b><p><select id="rs"><option>Incident Response</option><option>Penetration Testing</option><option>Cloud Security</option><option>Security Auditing</option></select></p><p><select><option>2 weeks</option><option>1 month</option><option>3 months</option></select></p><button class="btn" onclick="toast('Requirement posted. 3 experts recommended')">Get recommended experts</button></div>`,
+"Expert":()=>kp([["3","New requests"],["2","Active cases"],["₹48k","Earnings (mo)"]])+[["CN-10482","Account Compromise"],["CN-10490","Phishing"]].map(c=>`<div class="g" style="margin:8px 0"><b>${c[0]}</b> · ${c[1]}<br><button class="btn" onclick="toast('Request accepted')">Accept</button><button class="btn s" onclick="toast('Request declined')">Reject</button><button class="btn s" onclick="toast('Evidence access logged')">View evidence</button></div>`).join('')+`<label>Availability <select onchange="toast('Availability: '+this.value)"><option>Available</option><option>Busy</option><option>Away</option></select></label>`,
+"Admin":()=>kp([["128","Active cases"],["54","Verified experts"],["19","Organizations"],["2","Security alerts"]])+`<div class="grid"><div class="g"><b>VERIFICATION QUEUE</b><br>4 experts pending <button class="btn" onclick="toast('Expert approved')">Approve next</button></div><div class="g"><b>SYSTEM HEALTH</b><br><span class="dot"></span> API · DB · Vault OK</div></div><table><tr><th>Time</th><th>Audit event</th></tr><tr><td>10:42:11</td><td>Expert verification updated</td></tr><tr><td>10:43:02</td><td>Evidence accessed</td></tr><tr><td>10:44:15</td><td>Case status changed</td></tr></table>`};
+Object.keys(D).forEach((k,i)=>{const b=document.createElement('span');b.className='chip'+(i?'':' on');b.textContent=k;b.onclick=()=>{document.querySelectorAll('#tb .chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#db').innerHTML=D[k]()};$('#tb').append(b)});$('#db').innerHTML=D.Victim();
+// ---- Security
+$('#sl').innerHTML=["HTTPS / TLS","Encryption","RBAC","Secure Sessions","MFA","Input Validation","File Validation","Malware Scanning","Audit Logging","Backup & Recovery"].map(x=>`<div class="g">🛡 ${x}</div>`).join('');
+// reveal
+const io=new IntersectionObserver(en=>en.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.1});document.querySelectorAll('.rv').forEach(x=>io.observe(x));
+</script></body></html>
+
